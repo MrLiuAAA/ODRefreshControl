@@ -14,7 +14,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    //适配iOS7
+    if([[[UIDevice currentDevice]systemVersion]floatValue]>=7.0)
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     ODRefreshControl *refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
     [refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
 }
